@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    int n; cin >> n;
+
+    vector<int> odd, even;
+
+    for (int i = 0; i < n; ++i) {
+        int a; cin >> a;
+        if (a % 2 == 0)
+            even.push_back(a);
+        else
+            odd.push_back(a);
+    }
+
+    vector<int> sortedOdd = odd;
+    vector<int> sortedEven = even;
+    sort(sortedOdd.begin(), sortedOdd.end());
+    sort(sortedEven.begin(), sortedEven.end());
+
+    if (sortedOdd == odd && sortedEven == even)
+        cout << "Yes\n";
+    else
+        cout << "No\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T; cin >> T;
+    while (T--) {
+        solve();
+    }
+
+    return 0;
+}
