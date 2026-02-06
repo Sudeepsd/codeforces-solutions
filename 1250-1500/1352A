@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    int a; cin >> a;
+
+    long long pow = 1;
+    vector<int> ans;
+    while (a > 0) {
+        if (a % 10)
+            ans.push_back((a % 10) * pow);
+        a /= 10;
+        pow *= 10;
+    }
+
+    cout << ans.size() << "\n";
+    for (int x : ans)
+        cout << x << " ";
+
+    cout << "\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T; cin >> T;
+    while (T--) {
+        solve();
+    }
+
+    return 0;
+}
