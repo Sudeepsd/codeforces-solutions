@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define MOD 10e9 + 7
+
+void solve() {
+    string s;
+    cin >> s;
+
+    cout << s[0];
+    for (int i = 1; i < s.length();  i += 2)
+        cout << s[i];
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    cin >> T;
+    while (T--) {
+        solve();
+        cout << "\n";
+    }
+
+    return 0;
+}
