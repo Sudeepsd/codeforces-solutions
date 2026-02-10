@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define MOD 10e9 + 7
+
+void solve() {
+    int n; cin >> n;
+    int maxi = INT_MIN;
+    int mini = INT_MAX;
+
+    for (int i = 0; i < n; ++i) {
+        int x; cin >> x;
+        maxi = max(maxi, x);
+        mini = min(mini, x);
+    }
+
+    cout << maxi - mini << "\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    cin >> T;
+    while (T--) {
+        solve();
+    }
+
+    return 0;
+}
