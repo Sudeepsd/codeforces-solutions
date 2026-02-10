@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define MOD 10e9 + 7
+
+void solve() {
+    int n; cin >> n;
+
+    if (n % 4 != 0) {
+        cout << "NO";
+        return;
+    }
+
+    cout << "YES\n";
+    int total = 0;
+    for (int i = 2; i <= n; i += 2) {
+        cout << i << " ";
+        total += i;
+    }
+    for (int i = 1; i < n - 2; i += 2) {
+        cout << i << " ";
+        total -= i;
+    }
+    cout << total;
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    cin >> T;
+    while (T--) {
+        solve();
+        cout << "\n";
+    }
+
+    return 0;
+}
