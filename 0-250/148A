@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define MOD 10e9 + 7
+
+void solve() {
+    int arr[4];
+    
+    for (int i = 0; i < 4; ++i)
+        cin >> arr[i];
+    
+    int d; cin >> d;
+
+    int cnt = 0;
+    for (int i = 1; i <= d; ++i) {
+        bool attack = false;
+        for (int j = 0; j < 4; ++j)
+            if (i % arr[j] == 0)
+                attack = true;
+        if (attack)
+            ++cnt;
+    }
+    cout << cnt;
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    // cin >> T;
+    while (T--) {
+        solve();
+    }
+
+    return 0;
+}
