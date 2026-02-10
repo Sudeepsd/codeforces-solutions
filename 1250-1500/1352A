@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define MOD 10e9 + 7
+
+void solve() {
+    int n; cin >> n;
+
+    vector<int> res;
+    int pre = 1;
+
+    while (n > 0) {
+        int rem = n % 10;
+        if (rem)
+            res.push_back(rem * pre);
+        n /= 10;
+        pre *= 10;
+    }
+
+    cout << res.size() << "\n";
+    for (int x : res)
+        cout << x << " ";
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    cin >> T;
+    while (T--) {
+        solve();
+        cout << "\n";
+    }
+
+    return 0;
+}
