@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define MOD 10e9 + 7
+
+void solve() {
+    int n; cin >> n;
+
+    int best; cin >> best;
+    int worst = best;
+
+    int cnt = 0;
+    for (int i = 1; i < n; ++i) {
+        int x; cin >> x;
+        if (x > best) {
+            ++cnt;
+            best = x;
+        }
+        if (x < worst) {
+            ++cnt;
+            worst = x;
+        }
+    }
+    cout << cnt << "\n";
+
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    // cin >> T;
+    while (T--) {
+        solve();
+    }
+
+    return 0;
+}
