@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define MOD 10e9 + 7
+
+void solve() {
+    int n; cin >> n;
+
+    cout << (n - 1) / 2;
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    cin >> T;
+    while (T--) {
+        solve();
+        cout << "\n";
+    }
+
+    return 0;
+}
