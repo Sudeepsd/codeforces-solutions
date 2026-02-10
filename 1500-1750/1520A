@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define MOD 10e9 + 7
+
+void solve() {
+    int n; cin >> n;
+    string s;
+    cin >> s;
+
+    unordered_set<int> seen;
+    seen.insert(s[0]);
+
+    for (int i = 1; i < n; ++i) {
+        if (s[i] != s[i-1]) {
+            if (seen.count(s[i])) {
+                cout << "NO\n";
+                return;
+            }
+            seen.insert(s[i]);
+        }
+    }
+    cout << "YES\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    cin >> T;
+    while (T--) {
+        solve();
+    }
+
+    return 0;
+}
