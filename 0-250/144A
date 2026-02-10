@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define MOD 10e9 + 7
+
+void solve() {
+    int n; cin >> n;
+    int arr[n];
+
+    for (int i = 0; i < n; ++i)
+        cin >> arr[i];
+
+    int l = -1, maxi = INT_MIN;
+    int r = -1, mini = INT_MAX;
+    for (int i = 0; i < n; ++i) {
+        if (arr[i] > maxi) {
+            maxi = max(maxi, arr[i]);
+            l = i;
+        }
+        if (arr[i] <= mini) {
+            mini = min(mini, arr[i]);
+            r = i;
+        }
+    }
+
+    int shifts = l + (n - r - 1);
+    if (l > r)
+        cout << shifts - 1;
+    else
+        cout << shifts;
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    // cin >> T;
+    while (T--) {
+        solve();
+        cout << "\n";
+    }
+
+    return 0;
+}
