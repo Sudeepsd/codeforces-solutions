@@ -2,4 +2,3 @@
 My codeforces solutions
 
 <!-- AUTO-GENERATED-LINKS -->
-
