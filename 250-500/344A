@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define MOD 10e9 + 7
+
+void solve() {
+    int n; cin >> n;
+
+    string prev;
+    cin >> prev;
+
+    int cnt = 1;
+    for (int i = 1; i < n; ++i) {
+        string curr;
+        cin >> curr;
+
+        if (curr != prev)
+            ++cnt;
+            
+        prev = curr;
+    }
+    cout << cnt;
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    // cin >> T;
+    while (T--) {
+        solve();
+    }
+
+    return 0;
+}
