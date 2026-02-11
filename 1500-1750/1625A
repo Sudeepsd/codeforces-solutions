@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define MOD 10e9 + 7
+
+void solve() {
+    int n, l;
+    cin >> n >> l;
+
+    int arr[n];
+    for (int i = 0; i < n; ++i)
+        cin >> arr[i];
+
+    int ans = 0;
+    for (int i = 0; i < l; ++i) {
+        int ones = 0;
+        for (int j = 0; j < n; ++j) {
+            if (arr[j] & 1)
+                ++ones;
+            else
+                --ones;
+            arr[j] >>= 1;
+        }
+
+        if (ones >= 0)
+            ans |= (1 << i);
+    }
+
+    cout << ans << "\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    cin >> T;
+    while (T--) {
+        solve();
+    }
+
+    return 0;
+}
