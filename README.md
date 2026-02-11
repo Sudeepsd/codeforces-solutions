@@ -26,5 +26,3 @@ My codeforces solutions
 22. [1500-1750/1624A](1500-1750/1624A)
 23. [1500-1750/1624B](1500-1750/1624B)
 24. [1500-1750/1624C](1500-1750/1624C)
-25. [README.tmp](README.tmp)
-26. [all_files.txt](all_files.txt)
