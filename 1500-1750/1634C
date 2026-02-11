@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define MOD 10e9 + 7
+
+void solve() {
+    int n, k;
+    cin >> n >> k;
+
+    if ((n & 1) && k >= 2) {
+        cout << "NO\n";
+        return;
+    }
+
+    cout << "YES\n";
+    for (int i = 1; i <= n; ++i) {
+        for (int j = 0; j < k; ++j) {
+            cout << i + j * n << " ";
+        }
+        cout << "\n";
+    }
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    cin >> T;
+    while (T--) {
+        solve();
+    }
+
+    return 0;
+}
