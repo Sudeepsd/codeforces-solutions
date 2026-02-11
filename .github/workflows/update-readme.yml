@@ -2,8 +2,11 @@ name: Update README links
 
 on:
   schedule:
-    - cron: "0 0 * * *"   # midnight UTC
+    - cron: "0 0 * * *"
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   update-readme:
@@ -11,6 +14,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
       - name: Collect files
         run: |
@@ -24,18 +29,14 @@ jobs:
       - name: Update README
         run: |
           MARKER="<!-- AUTO-GENERATED-LINKS -->"
-
           awk -v marker="$MARKER" '
             $0 == marker { print; exit }
             { print }
           ' README.md > README.tmp
-
           echo "$MARKER" >> README.tmp
-
           while read file; do
             echo "- [$file]($file)"
           done < all_files.txt >> README.tmp
-
           mv README.tmp README.md
 
       - name: Commit
