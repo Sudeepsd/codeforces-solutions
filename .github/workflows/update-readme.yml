@@ -17,27 +17,47 @@ jobs:
         with:
           persist-credentials: true
 
-      - name: Collect files
+      - - name: Collect files
         run: |
           find . -type f \
             ! -path "./.git/*" \
             ! -path "./.github/*" \
             ! -name "README.md" \
+            ! -name "all_files.txt" \
+            ! -name "LICENSE" \
             | sed 's|^\./||' \
             | sort > all_files.txt
+
 
       - name: Update README
         run: |
           MARKER="<!-- AUTO-GENERATED-LINKS -->"
+      
+          # Keep everything up to and including marker
           awk -v marker="$MARKER" '
-            $0 == marker { print; exit }
+            $0 == marker { print; found=1; exit }
             { print }
           ' README.md > README.tmp
-          echo "$MARKER" >> README.tmp
-          while read file; do
-            echo "- [$file]($file)"
-          done < all_files.txt >> README.tmp
+      
+          # If marker does not exist, append it
+          if ! grep -q "$MARKER" README.md; then
+            echo "" >> README.tmp
+            echo "$MARKER" >> README.tmp
+          fi
+      
+          # Generate numbered list
+          find . -type f \
+            ! -path "./.git/*" \
+            ! -path "./.github/*" \
+            ! -name "README.md" \
+            ! -name "LICENSE" \
+            | sed 's|^\./||' \
+            | sort | awk '
+              { printf "%d. [%s](%s)\n", NR, $0, $0 }
+            ' >> README.tmp
+      
           mv README.tmp README.md
+
 
       - name: Commit
         run: |
