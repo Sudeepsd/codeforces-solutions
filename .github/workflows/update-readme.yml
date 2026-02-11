@@ -49,6 +49,8 @@ jobs:
             ! -path "./.git/*" \
             ! -path "./.github/*" \
             ! -name "README.md" \
+            ! -name "README.tmp" \
+            ! -name "all_files.txt" \
             ! -name "LICENSE" \
             | sed 's|^\./||' \
             | sort | awk '
