@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    string s;
+    cin >> s;
+
+    if (s.length() % 2 != 0) {
+        cout << "NO\n";
+        return;
+    }
+
+    int len = s.length() / 2;
+    for (int i = 0; i < len; ++i) {
+        if (s[i] != s[i + len]) {
+            cout << "NO\n";
+            return;
+        }
+    }
+    cout << "YES\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    cin >> T;
+    while (T--) {
+        solve();
+    }
+
+    return 0;
+}
