@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    string a, b;
+    cin >> a >> b;
+
+    unordered_map<char, int> umap;
+    for (int i = 0; i < 26; ++i)
+        umap[a[i]] = i;
+
+    int cnt = 0;
+    for (int i = 1; i < b.length(); ++i)
+        cnt += abs(umap[b[i]] - umap[b[i-1]]);
+    cout << cnt << "\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    cin >> T;
+    while (T--) {
+        solve();
+    }
+
+    return 0;
+}
