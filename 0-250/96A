@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    string s;
+    cin >> s;
+
+    int len = 1, maxLen = 1;
+    int prev = s[0];
+    for (int i = 1; i < s.length(); ++i) {
+        if (s[i] != s[i-1])
+            len = 1;
+        else
+            ++len;
+        maxLen = max(maxLen, len);
+    }
+
+    if (maxLen >= 7)
+        cout << "YES\n";
+    else
+        cout << "NO\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    // cin >> T;
+    while (T--) {
+        solve();
+    }
+
+    return 0;
+}
