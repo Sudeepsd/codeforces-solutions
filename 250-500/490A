@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define MOD 10e9 + 7
+
+void solve() {
+    int n; cin >> n;
+
+    vector<vector<int>> teams(3);
+    for (int i = 1; i <= n; ++i) {
+        int x; cin >> x;
+        teams[x-1].push_back(i);
+    }
+
+    int cnt = min({teams[0].size(), teams[1].size(), teams[2].size()});
+    cout << cnt << "\n";
+
+    for (int i = 0; i < cnt; ++i)
+        cout << teams[0][i] << " " << teams[1][i] << " " << teams[2][i] << "\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    // cin >> T;
+    while (T--) {
+        solve();
+    }
+
+    return 0;
+}
