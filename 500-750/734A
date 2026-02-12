@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    int n; cin >> n;
+    string s;
+    cin >> s;
+
+    int danikWon = 0;
+    for (char ch : s) {
+        if (ch == 'D')
+            ++danikWon;
+        else
+            --danikWon;
+    }
+
+    if (danikWon > 0)
+        cout << "Danik\n";
+    else if (danikWon < 0)
+        cout << "Anton\n";
+    else
+        cout << "Friendship\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    // cin >> T;
+    while (T--) {
+        solve();
+    }
+
+    return 0;
+}
