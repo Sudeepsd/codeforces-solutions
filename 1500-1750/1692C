@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    int m = 8, n = 8;
+
+    char board[m][n];
+    for (int i = 0; i < m; ++i) {
+        for (int j = 0; j < n; ++j) {
+            cin >> board[i][j];
+        }
+    }
+
+    const int dx[4] = {-1, -1, 1, 1};
+    const int dy[4] = {-1, 1, 1, -1};
+    for (int i = 1; i < 7; ++i) {
+        for (int j = 0; j < 8; ++j) {
+            if (board[i][j] == '#') {
+                bool head = true;
+                for (int k = 0; k < 4; ++k) {
+                    const int x = i + dx[k];
+                    const int y = j + dy[k];
+
+                    if (x < 0 || y < 0 || x >= 8 || y >= 8)
+                        continue;
+
+                    if (board[x][y] == '.')
+                        head = false;
+                }
+
+                if (head) {
+                    cout << i+1 << " " << j+1 << "\n";
+                    return;
+                }
+            }
+        }
+    }
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    cin >> T;
+    while (T--) {
+        solve();
+    }
+
+    return 0;
+}
