@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    int x, y, n;
+    cin >> x >> y >> n;
+
+    int r = n % x;
+    if (r - y >= 0)
+        cout << n - (r - y) << "\n";
+    else
+        cout << n - r - (x - y) << "\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    cin >> T;
+    while (T--) {
+        solve();
+    }
+
+    return 0;
+}
