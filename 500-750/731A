@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int findMin(int a, int b) {
+    if (a > b)
+        return findMin(b, a);
+
+    return min(b - a, 26 - b + a);
+}
+
+void solve() {
+    string s;
+    cin >> s;
+
+    int prev = 1, cnt = 0;
+    for (char ch : s) {
+        int curr = ch - 'a' + 1;
+        cnt += findMin(curr, prev);
+        prev = curr;
+    }
+    cout << cnt << "\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    // cin >> T;
+    while (T--) {
+        solve();
+    }
+
+    return 0;
+}
