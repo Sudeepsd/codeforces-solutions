@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define MOD 10e9 + 7
+
+void solve() {
+    string s;
+    getline(cin, s);
+
+    unordered_set<char> seen;
+
+    for (int i = 1; i < s.length() - 1; i += 3) {
+        seen.insert(s[i]);
+    }
+
+    cout << seen.size() << "\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    // cin >> T;
+    while (T--) {
+        solve();
+    }
+
+    return 0;
+}
