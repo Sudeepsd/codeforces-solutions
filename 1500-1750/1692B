@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    int n; cin >> n;
+
+    int cnt = 0;
+    unordered_set<int> seen;
+    for (int i = 0; i < n; ++i) {
+        int x; cin >> x;
+        if (seen.count(x))
+            ++cnt;
+        seen.insert(x);
+    }
+
+    if (cnt % 2 == 0)
+        cout << seen.size() << "\n";
+    else
+        cout << seen.size() - 1 << "\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    cin >> T;
+    while (T--) {
+        solve();
+    }
+
+    return 0;
+}
