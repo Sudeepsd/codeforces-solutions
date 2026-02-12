@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    string s;
+    cin >> s;
+
+    int arr[3] = {0};
+    for (char ch : s) {
+        ++arr[ch - 'A'];
+    }
+    if (arr[1] == arr[0] + arr[2])
+        cout << "YES\n";
+    else
+        cout << "NO\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    cin >> T;
+    while (T--) {
+        solve();
+    }
+
+    return 0;
+}
