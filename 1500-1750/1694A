@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    int a, b;
+    cin >> a >> b;
+
+    for (int i = min(a, b); i > 0; --i) {
+        cout << "01";
+    }
+    for (int i = min(a, b); i < a; ++i)
+        cout << "0";
+    for (int i = min(a, b); i < b; ++i)
+        cout << "1";
+    cout << "\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    cin >> T;
+    while (T--) {
+        solve();
+    }
+
+    return 0;
+}
