@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    string a, b;
+    cin >> a >> b;
+
+    int aPos = a.find_first_not_of('0');
+    int bPos = b.find_first_not_of('0');
+
+    int aLen = a.length() - aPos;
+    int bLen = b.length() - bPos;
+
+    if (aLen < bLen)
+        cout << "<" << "\n";
+    else if (aLen > bLen)
+        cout << ">" << "\n";
+    else {
+        while (aPos < a.length() && bPos < b.length()) {
+            if (a[aPos] < b[bPos]) {
+                cout << "<" << "\n";
+                return;
+            } else if (a[aPos] > b[bPos]) {
+                cout << ">" << "\n";
+                return;
+            }
+            ++aPos; ++bPos;
+        }
+        cout << "=" << "\n";
+    }
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    // cin >> T;
+    while (T--) {
+        solve();
+    }
+
+    return 0;
+}
