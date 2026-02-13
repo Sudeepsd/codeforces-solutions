@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    int n, k;
+    cin >> n >> k;
+
+    int a[n], b[n];
+    for (int i = 0; i < n; ++i)
+        cin >> a[i];
+    for (int i = 0; i < n; ++i)
+        cin >> b[i];
+
+    sort(a, a + n, greater<int>());
+    sort(b, b + n, greater<int>());
+
+    int l = 0, r = 0, total = 0;
+    for (l = 0; l < n - k; ++l)
+        total += a[l];
+
+    for (int i = 0; i < k; ++i) {
+        if (a[l] > b[r]) {
+            total += a[l];
+            ++l;
+        } else {
+            total += b[r];
+            ++r;
+        }
+    }
+    cout << total << "\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    cin >> T;
+    while (T--) {
+        solve();
+    }
+
+    return 0;
+}
