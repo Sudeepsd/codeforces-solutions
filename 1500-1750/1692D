@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    int h, m, x;
+    scanf("%d:%d %d", &h, &m, &x);
+
+    const int sh = h, sm = m;
+    int ans = 0;
+    do {
+        m += x;
+        h += (m / 60);
+        m %= 60;
+        h %= 24;
+        if (m % 10 == h / 10 && m / 10 == h % 10)
+            ++ans;
+    } while (h != sh || m != sm);
+    cout << ans << "\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    cin >> T;
+    while (T--) {
+        solve();
+    }
+
+    return 0;
+}
