@@ -2,19 +2,25 @@
 using namespace std;
 
 void solve() {
-    int h, m, x;
-    scanf("%d:%d %d", &h, &m, &x);
+    string t;
+    cin >> t;
 
-    const int sh = h, sm = m;
-    int ans = 0;
+    int h = (t[0] - '0') * 10 + (t[1] - '0');
+    int m = (t[3] - '0') * 10 + (t[4] - '0');
+
+    int x; cin >> x;
+
+    int sh = h, sm = m;
+    int ans = 0, time = 0;
     do {
         m += x;
-        h += (m / 60);
+        h += m / 60;
         m %= 60;
         h %= 24;
         if (m % 10 == h / 10 && m / 10 == h % 10)
             ++ans;
     } while (h != sh || m != sm);
+
     cout << ans << "\n";
 }
 
