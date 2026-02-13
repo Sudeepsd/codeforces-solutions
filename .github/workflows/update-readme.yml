@@ -1,0 +1,68 @@
+name: Update README links
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Collect files
+        run: |
+          find . -type f \
+            ! -path "./.git/*" \
+            ! -path "./.github/*" \
+            ! -name "README.md" \
+            ! -name "all_files.txt" \
+            ! -name "LICENSE" \
+            | sed 's|^\./||' \
+            | sort > all_files.txt
+
+      - name: Update README
+        run: |
+          MARKER="<!-- AUTO-GENERATED-LINKS -->"
+
+          # Keep everything up to and including marker
+          awk -v marker="$MARKER" '
+            $0 == marker { print; found=1; exit }
+            { print }
+          ' README.md > README.tmp
+
+          # If marker does not exist, append it
+          if ! grep -q "$MARKER" README.md; then
+            echo "" >> README.tmp
+            echo "$MARKER" >> README.tmp
+          fi
+
+          # Generate numbered list
+          find . -type f \
+            ! -path "./.git/*" \
+            ! -path "./.github/*" \
+            ! -name "README.md" \
+            ! -name "README.tmp" \
+            ! -name "all_files.txt" \
+            ! -name "LICENSE" \
+            | sed 's|^\./||' \
+            | sort | awk '
+              { printf "%d. [%s](%s)\n", NR, $0, $0 }
+            ' >> README.tmp
+
+          mv README.tmp README.md
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add README.md
+          git commit -m "Nightly README update" || exit 0
+          git push
