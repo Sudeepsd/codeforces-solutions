@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int foundChar(const string& s, char find, int idx) {
+    for (; idx < s.length(); ++idx) 
+        if (s[idx] == find)
+            return idx;
+    return -1;
+}
+
+void solve() {
+    string s;
+    cin >> s;
+
+    int idx = 0;
+    for (char ch : string("hello")) {
+        idx = foundChar(s, ch, idx);
+        if (idx == -1) {
+            cout << "NO\n";
+            return;
+        }
+        ++idx;
+    }
+    cout << "YES\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int T = 1;
+    // cin >> T;
+    while (T--) {
+        solve();
+    }
+
+    return 0;
+}
