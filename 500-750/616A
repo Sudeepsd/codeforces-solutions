@@ -8,6 +8,9 @@ void solve() {
     int aPos = a.find_first_not_of('0');
     int bPos = b.find_first_not_of('0');
 
+    if (aPos == string::npos) aPos = a.length();
+    if (bPos == string::npos) bPos = b.length();
+
     int aLen = a.length() - aPos;
     int bLen = b.length() - bPos;
 
